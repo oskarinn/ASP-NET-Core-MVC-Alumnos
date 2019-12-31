@@ -1,0 +1,85 @@
+﻿@model AlumnosASPNETMVC.Models.AlumnoViewModel;
+
+@{
+    ViewData["Title"] = "Crear Nuevo Alumno";
+}
+
+<div class="">
+    <h1>@ViewData["Title"]</h1>
+    <p>Ingrese aquí la información del nuevo alumno.</p>
+
+    <form action="/Alumnos/Create" method="post">
+      <div role="alert" class="@ViewData["msg"].ToString().Contains("satisfactoriamente") ? 'alert alert-success' : 'alert alert-warning'">@ViewData["msg"]</div>
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+      <div class="form-row">
+        <div class="col-sm-4">
+            <label asp-for="Nombre" class="control-label">Nombre(s)</label>
+            <input type="text" class="form-control" asp-for="Nombre" placeholder="Nombre">
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-4">
+            <label asp-for="ApPaterno" class="control-label">Apellido Paterno</label>
+            <input type="text" class="form-control" asp-for="ApPaterno" placeholder="Apellido Paterno">
+            <span asp-validation-for="ApPaterno" class="text-danger"></span>
+        </div>
+        
+        <div class="col-sm-4">
+            <label asp-for="ApMaterno" class="control-label">Apellido Materno</label>
+            <input type="text" class="form-control" asp-for="ApMaterno" placeholder="Apellido Materno">
+            <span asp-validation-for="ApMaterno" class="text-danger"></span>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label asp-for="FechaNac" class="control-label">Fecha de Nacimiento</label>
+        <input type="date" class="form-control" asp-for="FechaNac" placeholder="DD/MM/AAAA">
+        <span asp-validation-for="FechaNac" class="text-danger"></span>
+      </div>
+
+      <fieldset class="form-group">
+        <legend class="col-form-label pt-0">Genero</legend>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" asp-for="Genero" id="Genero1" value="Masculino" checked>
+              <label class="form-check-label" asp-for="Genero">
+                Masculino
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" asp-for="Genero" id="Genero2" value="Femenino">
+              <label class="form-check-label" asp-for="Genero">
+                Femenino
+              </label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-group col-sm-4">
+        <label asp-for="FechaIngreso" class="">Fecha de Ingreso</label>
+        <input type="date" class="form-control" asp-for="FechaIngreso" placeholder="DD/MM/AAAA">
+        <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+      </div>
+
+      <div class="form-check form-group col-sm-4">
+        <input type="checkbox" class="form-check-input" asp-for="Activo">
+        <label class="form-check-label" asp-for="Activo">Activo</label>
+      </div>
+
+      <div class="form-group col-sm-4">
+        <label asp-for="RFC" class="">RFC</label>
+        <input type="text" class="form-control" asp-for="RFC" placeholder="AAAAXXXXXXXAX">
+        <span asp-validation-for="RFC" class="text-danger"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
