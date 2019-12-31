@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AlumnosASPNETMVC.Models;
+using System.Text.Encodings.Web;
 
 namespace AlumnosASPNETMVC.Controllers
 {

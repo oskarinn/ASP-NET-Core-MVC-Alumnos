@@ -4,8 +4,11 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
-
   <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Views\Alumnos\" />
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="12.2.3" />
+  </ItemGroup>
 </Project>

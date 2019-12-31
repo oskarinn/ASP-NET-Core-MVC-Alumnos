@@ -2,6 +2,26 @@
 
 @{
     ViewData["Title"] = "Crear Nuevo Alumno";
+    string msg = "";
+    string styloDefault = "alert alert-warning";
+
+    if(TempData.ContainsKey("msg"))
+    // if ( ViewData["msg"] != null)
+    {
+        msg = TempData["msg"] as string;
+
+        msg = String.IsNullOrEmpty(msg) ? "" : msg;
+    }
+
+    if (msg == "")
+    {
+        styloDefault = "invisible";
+    }
+    else
+    {
+        styloDefault = msg.Contains("satisfactoriamente") ? "alert alert-success" : "alert alert-warning";
+    }
+    
 }
 
 <div class="">
@@ -9,7 +29,7 @@
     <p>Ingrese aquí la información del nuevo alumno.</p>
 
     <form action="/Alumnos/Create" method="post">
-      <div role="alert" class="@ViewData["msg"].ToString().Contains("satisfactoriamente") ? 'alert alert-success' : 'alert alert-warning'">@ViewData["msg"]</div>
+      <div role="alert" class="@styloDefault">@msg</div>
       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
       <div class="form-row">
@@ -71,7 +91,7 @@
 
       <div class="form-group col-sm-4">
         <label asp-for="RFC" class="">RFC</label>
-        <input type="text" class="form-control" asp-for="RFC" placeholder="AAAAXXXXXXXAX">
+        <input type="text" class="form-control" asp-for="RFC" placeholder="AAAAYYMMDDXAX" title="RFC no tiene formato valido!">
         <span asp-validation-for="RFC" class="text-danger"></span>
       </div>
 
